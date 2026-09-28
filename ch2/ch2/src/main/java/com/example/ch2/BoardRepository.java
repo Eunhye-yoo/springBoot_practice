@@ -1,7 +1,9 @@
 package com.example.ch2;
 
+import jakarta.persistence.PrePersist;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -9,10 +11,12 @@ import java.util.List;
 //public interface BoardRepository extends CrudRepository<Board, Long> {
 // CrudRepository -> JpaRepository로 변경
 // JpaRepository는 CrudRepository의 모든 기능 + 페이징 + JPA 특화 기능
-public interface BoardRepository extends JpaRepository<Board, Long> {
-//    // JPA는 메서드 이름에 특정 규칙 적용 따라서 메서드 이름에 따라 자동으로 쿼리 작성 가능
-//
-//    // SELECT * FROM Board WHERE WRITER = :writer
+public interface BoardRepository extends JpaRepository<Board, Long>,
+                                        QuerydslPredicateExecutor<Board> {
+    List<Board> findByUser_FirstName(String firstName);
+    // JPA는 메서드 이름에 특정 규칙 적용 따라서 메서드 이름에 따라 자동으로 쿼리 작성 가능
+
+// SELECT * FROM Board WHERE WRITER = :writer
 //    List<Board> findByWriter(String writer);
 //
 //    // SELECT COUNT(*) FROM Board WHERE WRITER = :writer
