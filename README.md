@@ -2,7 +2,7 @@
 
 수업 예제와 개인 미션으로 Spring MVC, Thymeleaf, JPA를 학습한 기록입니다. 각 폴더는 **독립적인 Gradle 프로젝트**이며, 완성된 하나의 서비스가 아닙니다.
 
-## 프로젝트별 내용
+## Contents
 
 | 경로 | 확인할 내용 | 구분 |
 | --- | --- | --- |
@@ -14,7 +14,7 @@
 
 **환경:** Java 21, Spring Boot 4.1.1, Gradle. `ch2`에서는 MySQL, Spring Data JPA, QueryDSL 5.0.0을 사용합니다. 그 외 폴더는 각자의 `build.gradle`에 적힌 의존성을 확인하세요.
 
-## 학습 내용과 현재 범위
+## Learning Scope
 
 - **MVC·화면:** `@Controller`, GET/POST 매핑, 요청값 바인딩, Model 전달, Thymeleaf 템플릿·Fragment.
 - **요청 공통 처리:** `HandlerInterceptor` 등록과 경로 설정, 수업 예제의 AOP 구조.
@@ -23,7 +23,7 @@
 
 테스트 파일의 존재가 모든 예제의 통과를 뜻하지는 않습니다. 특히 `ch2`는 데이터베이스 연결 설정이 필요한 실습입니다.
 
-## 실행 예시
+## Run
 
 프로젝트별 폴더로 이동하여 각 프로젝트의 Gradle Wrapper를 사용합니다. 예를 들어 macOS/Linux에서 `ch1`을 실행하려면:
 
