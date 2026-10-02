@@ -23,7 +23,7 @@
 - **MVC·화면:** `@Controller`, GET/POST 매핑, 요청값 바인딩, Model 전달, Thymeleaf 템플릿·Fragment.
 - **요청 공통 처리:** 수업 예제의 `HandlerInterceptor`·AOP 구조와 개인 미션 골격 비교.
 - **JPA:** `@ManyToOne`, `@OneToOne` 관계와 Repository 동작을 테스트 코드로 확인.
-- **QueryDSL:** `QuerydslJoinTest`에 `@Test`가 붙은 Join 테스트 코드가 있습니다. 이번 문서 검토에서 실행한 테스트는 아닙니다. 조건 조회·집계·동적 검색을 다룬 `BoardQuerydslTest` 및 `BoardQuerydslMissionTest`는 현재 주석 상태이므로 완료한 테스트로 표시하지 않습니다.
+- **QueryDSL:** `QuerydslJoinTest`에 `@Test`가 붙은 Join 테스트 코드가 있습니다. 실행 결과는 미기록 상태입니다. 조건 조회·집계·동적 검색을 다룬 `BoardQuerydslTest` 및 `BoardQuerydslMissionTest`는 현재 주석 상태이므로 실행 완료 범위에 포함하지 않습니다.
 
 테스트 파일의 존재가 모든 예제의 통과를 뜻하지는 않습니다. 특히 `ch2/ch2`는 데이터베이스 연결 설정이 필요한 실습입니다.
 
