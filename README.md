@@ -37,3 +37,6 @@ cd ch1/ch1
 ~~~
 
 Windows에서는 같은 폴더에서 `gradlew.bat bootRun`을 실행할 수 있습니다. 데이터베이스를 사용하는 `ch2/ch2`는 `application.properties`의 로컬 DB 설정을 먼저 확인해야 합니다.
+
+## DB 실행 환경
+`ch2/ch2`는 실행 전에 `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` 환경변수를 설정합니다. DB_URL에는 로컬 `springboot` 스키마의 JDBC URL을 넣습니다. IDE Run Configuration의 Environment 또는 로컬 실행 환경에서 주입하며 실제 값을 저장소에 커밋하지 않습니다. 이전 고정 비밀번호를 실제 사용·재사용했다면 교체합니다. 이번 설정 정리는 DB 연결·전체 예제 테스트 통과를 의미하지 않습니다.
