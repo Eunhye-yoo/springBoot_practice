@@ -1,42 +1,44 @@
 # Spring Boot Practice
 
-수업 예제와 개인 미션으로 Spring MVC, Thymeleaf, JPA를 학습한 기록입니다. 각 폴더는 **독립적인 Gradle 프로젝트**이며, 완성된 하나의 서비스가 아닙니다.
+Spring MVC의 요청 처리, Thymeleaf 화면 구성, JPA·QueryDSL의 DB 접근을 익힌 수업·복습 실습. 각 폴더는 독립적인 Gradle 프로젝트입니다.
 
-## Contents
+## 실습 목록
 
-| 경로 | 확인할 내용 | 구분 |
-| --- | --- | --- |
-| [`ch1/ch1`](./ch1/ch1/) | Controller, 요청 파라미터, Model Binding, Thymeleaf·Layout/Fragment | 수업 실습 |
-| [`ch1_mission/ch1_mission`](./ch1_mission/ch1_mission/) | 로그인 확인 Interceptor 미션 골격 | 개인 미션 · 미완성 |
-| [`ch1_teacher`](./ch1_teacher/) | MVC·Interceptor·AOP 및 회원·게시판·공지 예제 | 수업/비교용 코드 |
-| [`thymeleaf-practice/thymeleaf-practice`](./thymeleaf-practice/thymeleaf-practice/) | 회원가입 폼, 게시판 목록, 공통 공지 Fragment | 복습 실습 |
-| [`ch2/ch2`](./ch2/ch2/) | Entity 관계, Repository, JPA 동작 테스트, QueryDSL Join 예제 | DB/JPA 수업 실습 |
+| 폴더 | 내용 |
+| --- | --- |
+| [ch1/ch1](./ch1/ch1/) | Controller, 요청 파라미터, Model Binding, Thymeleaf |
+| [ch1_teacher](./ch1_teacher/) | 강사 예제: Interceptor·AOP, 회원·게시판·공지 |
+| [thymeleaf-practice](./thymeleaf-practice/thymeleaf-practice/) | 회원가입 폼, 게시판 목록, 공통 Fragment |
+| [ch2/ch2](./ch2/ch2/) | Entity 관계, Repository, JPA 테스트, QueryDSL Join |
+| [ch1_mission](./ch1_mission/ch1_mission/) | 로그인 확인 Interceptor 미션 · 작성 중 |
 
-## Current Scope
+## 살펴볼 코드
 
-`ch1_mission/ch1_mission`의 `LoginCheckInterceptor.preHandle()`은 현재 반환값·처리 본문이 비어 있어 컴파일 가능한 완료 구현으로 안내할 수 없습니다. 수업용 `ch1_teacher`의 Interceptor/AOP와 개인 미션의 구현 상태를 구분합니다.
+- **요청→화면:** Controller의 요청값 처리와 Model 전달, Thymeleaf 템플릿 연결
+- **공통 요청 처리:** 강사 예제의 HandlerInterceptor와 AOP
+- **데이터 접근:** Entity 관계와 Repository 테스트, QueryDSL Join 테스트 소스
 
-**환경:** Java 21, Spring Boot 4.1.1, Gradle. `ch2`에서는 MySQL, Spring Data JPA, QueryDSL 5.0.0을 사용합니다. 그 외 폴더는 각자의 `build.gradle`에 적힌 의존성을 확인하세요.
+## 실행
 
-## Learning Scope
+Java 21·Gradle 기준. 실행할 프로젝트 폴더에서 해당 Wrapper를 사용합니다.
 
-- **MVC·화면:** `@Controller`, GET/POST 매핑, 요청값 바인딩, Model 전달, Thymeleaf 템플릿·Fragment.
-- **요청 공통 처리:** 수업 예제의 `HandlerInterceptor`·AOP 구조와 개인 미션 골격 비교.
-- **JPA:** `@ManyToOne`, `@OneToOne` 관계와 Repository 동작을 테스트 코드로 확인.
-- **QueryDSL:** `QuerydslJoinTest`에 `@Test`가 붙은 Join 테스트 코드가 있습니다. 실행 결과는 미기록 상태입니다. 조건 조회·집계·동적 검색을 다룬 `BoardQuerydslTest` 및 `BoardQuerydslMissionTest`는 현재 주석 상태이므로 실행 완료 범위에 포함하지 않습니다.
-
-테스트 파일의 존재가 모든 예제의 통과를 뜻하지는 않습니다. 특히 `ch2/ch2`는 데이터베이스 연결 설정이 필요한 실습입니다.
-
-## Run
-
-프로젝트별 폴더로 이동하여 각 프로젝트의 Gradle Wrapper를 사용합니다. 예를 들어 macOS/Linux에서 `ch1`을 실행하려면:
-
-~~~bash
+```bash
 cd ch1/ch1
 ./gradlew bootRun
-~~~
+```
 
-Windows에서는 같은 폴더에서 `gradlew.bat bootRun`을 실행할 수 있습니다. 데이터베이스를 사용하는 `ch2/ch2`는 `application.properties`의 로컬 DB 설정을 먼저 확인해야 합니다.
+Windows에서는 `gradlew.bat bootRun` 사용.
 
-## DB 실행 환경
-`ch2/ch2`는 실행 전에 `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` 환경변수를 설정합니다. DB_URL에는 로컬 `springboot` 스키마의 JDBC URL을 넣습니다. IDE Run Configuration의 Environment 또는 로컬 실행 환경에서 주입하며 실제 값을 저장소에 커밋하지 않습니다. 이전 고정 비밀번호를 실제 사용·재사용했다면 교체합니다. 이번 설정 정리는 DB 연결·전체 예제 테스트 통과를 의미하지 않습니다.
+`ch2/ch2`는 MySQL 스키마와 다음 환경변수 준비 후 실행합니다.
+
+| 변수 | 값 |
+| --- | --- |
+| DB_URL | 로컬 springboot 스키마의 JDBC URL |
+| DB_USERNAME | 실습 DB 계정 |
+| DB_PASSWORD | 해당 계정의 비밀번호 |
+
+## 진행 메모
+
+`ch1_mission`의 LoginCheckInterceptor.preHandle()은 본문 작성 전입니다. QueryDSL 조건·집계 미션 일부는 주석 상태이며, 실행할 테스트는 각 파일에서 확인할 수 있습니다.
+
+[통합 실습](https://github.com/Eunhye-yoo/fullstack-integration-lab) · [프로필](https://github.com/Eunhye-yoo)
